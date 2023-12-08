@@ -26,7 +26,7 @@ const messages = document.querySelector('h2'); //targets the h2 elements
 
 /*----- event listeners -----*/
 document.getElementById('board').addEventListener('click', handleTurn); //needed in order to return the index of the click on the board and then place mark
-document.getElementById('reset-button').addEventListener('click', init);
+document.getElementById('reset-button').addEventListener('click', init); //id reset button is pressed at any moment game will use init function to reset board to empty
 
 /*----- functions -----*/
 function handleTurn(event) {
@@ -42,19 +42,19 @@ function handleTurn(event) {
     win = getWinner();
 
     render();
-    };
+};
 
-    function getWinner() {
-        let winner = null;
-        
-        winningCombos.forEach(function(combo, index) { //iterates through winning combos
+function getWinner() {
+    let winner = null;
+
+    winningCombos.forEach(function(combo, index) { //iterates through winning combos
     
         if (board[combo[0]] && board[combo[0]] === board[combo[1]] && board[combo[0]] === board[combo[2]]) //logic to return winner using index of winning combos arrays
         winner = board[combo[0]];
                 });
         
-        return winner;
-        }
+    return winner ? winner : board.includes('') ? null : 'T'; //logic lto return winner or announce tie or null
+    };
 
 function render() {
     // board.forEach(function(mark, index) { //this will iterate through array and create call back and indexes 
@@ -65,17 +65,20 @@ function render() {
     });
 
     messages.textContent = `It's ${turn}'s turn!`; //message will change based on turns current data 
-    messages.textContent = win === 'T' ? `That's a tie, queen!` : win ? `${win} wins the game!` : `It's ${turn}'s turn!`; //this will change message in h2 if tie
-    };
+    messages.textContent = win === 'T' ? `That's a tie, queen!` : win ? `${win} wins the game!` : `It's ${turn}'s turn!`; //this will change message in h2 if tie, win , turn
+
+    console.log(board);
+
+};
 
 function init() {
-board = [
-    "","","",
-    "","","",
-    "","",""
-];
+    board = [
+        "","","",
+        "","","",
+        "","",""
+    ];
 
-render();
+    render();
 
 };
 
