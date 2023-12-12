@@ -7,12 +7,16 @@
 <!-- this is how we link up the stylesheet -->
 <link href="style.css" rel="stylesheet" type="text/css">
 <!-- And this is how we link up the JS! -->
-<script defer src="main.js"></script>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="App.js" type="text/jsx"></script>
 <!-- Be sure to give your game a fun title -->
 <title>Moe-TIC-TAC-TOE</title>
 </head>
 
 <body>
+    <div id="root"></div>
     <h1>Tic-Tac-Toe</h1>
     <h2>It's X's turn!</h2>
     <!-- Many websites are just divs on divs on divs. Pay attention to the class and id attributes. We will be using those later to style and find elements in the document -->
