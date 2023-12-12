@@ -17,6 +17,7 @@ const winningCombos = [
 
 /*----- app's state (variables) -----*/
 let board;
+let gameOver = false;
 let turn = 'X';
 let win;
 
