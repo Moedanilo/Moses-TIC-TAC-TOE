@@ -10,17 +10,11 @@ const winningCombos = [
     [2, 4, 6]
     ];
 
-/*----- app's state (variables) -----*/
-const [board, setBoard] = React.useState(["","","","","","","","",""]);
+const [board, setBoard] = React.useState(['','','','','','','','',''])
 let gameOver = false;
-const [turn, setTurn] = React.useState('X');
-const [win, setWin] = React.useState(null);
+let [turn, setTurn] = React.useState('X');
+let [win, setWin] = React.useState(null);
 
-/*----- cached element references -----*/
-
-/*----- event listeners -----*/
-
-/*----- functions -----*/
 function App() {
 
     function handleTurn() {
@@ -42,8 +36,7 @@ function App() {
         let winner= null
         winningCombos.forEach(function (combo,index) {
 
-            if (board[combo[0]] 
-                && board[combo[0]] === board[combo[1]] 
+            if (board[combo[0]] && board[combo[0]] === board[combo[1]] 
                 && board[combo[0]] === board[combo[2]]) //logic to return winner using index of winning combos arrays
                 winner = board[combo[0]];
             });
@@ -58,24 +51,22 @@ function App() {
             }
 
     return (
-                <div>
-                    <h1>Tic-React-Toe</h1>
-                    <Message />
-                    <h2>It's {turn} turn!</h2>
-                    {/* <!-- Many websites are just divs on divs on divs. --> */}
-                    <div className="flex-container flex-column">
-                        <div className="flex-container flex-wrap" id="board" onClick={handleTurn}>
-                        {
-                            board.map((value, idx) => {
-                                return <div key={idx} id={idx} className='square'> {value} </div>
-                            })
-                        }
-                        </div>
-                        {/* <!-- I added a little reset button because our users are going to want to play round after round of our glorious game without ever refreshing the browser! -->
-                        <button id="reset-button">reset</button> */}
-                    </div>
+        <div>  
+            <h1>Tic-React-Toe</h1>
+            <Message />
+            <h2>It's ={turn}'s turn!</h2>
+            <div class="flex-container flex-column">
+                <div class="flex-container flex-wrap" id="board" onClick={handleTurn}>
+                    { board.map((value, idx) => {
+                        <div className="square" key={idx} id={idx}>{value}</div>
+                    })
+                    }
                 </div>
-                )
+
+            <button  id='reset-button'>reset</button>
+            </div>
+        </div>
+        )
     }
 
 ReactDom.render(<App />, root)
